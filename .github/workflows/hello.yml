@@ -19,3 +19,6 @@ jobs:
 
       - name: Print current date
         run: date
+      
+      - name: Print README.md
+        run: cat README.md
