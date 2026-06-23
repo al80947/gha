@@ -4,7 +4,12 @@ on:
   push:
     branches:
       - main
+
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
+
 
 jobs:
   hello:
@@ -20,5 +25,13 @@ jobs:
       - name: Print current date
         run: date
       
+      - name: On Pull Request
+        if: github.event_name == 'pull_request'
+        run: echo "I am going to make change to README"
+
+      - name: On Push
+        if: github.event_name == 'push'
+        run: echo "I want to add the date to README"
+
       - name: Print README.md
         run: cat README.md
